@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:react_conf/src/config/constants/strings.dart';
 import 'package:react_conf/src/config/routes/route.dart';
-import 'package:react_conf/src/features/home/test_page.dart';
+import 'package:react_conf/src/features/home/presentation/home_page.dart';
 
 import 'src/config/constants/font_assets.dart';
 import 'src/config/custom_scroll_behavior.dart';
@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
             dividerColor: Colors.transparent,
             fontFamily: FontAssets.fontFamilyInter,
           ),
-          home: const TestPage(),
+          home: const HomePage(),
         );
       },
     );
