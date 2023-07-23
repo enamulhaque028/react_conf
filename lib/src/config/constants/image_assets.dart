@@ -6,6 +6,10 @@ class ImageAssets {
   static String get icSponsor => 'ic_sponsor'.svg;
   static String get icMarker => 'ic_marker'.svg;
   static String get icTimeline => 'ic_timeline'.svg;
+  static String get icTwitter => 'ic_twitter'.svg;
+  static String get icLinkedin => 'ic_linkedin'.svg;
+  static String get icDribbble => 'ic_dribbble'.svg;
+  static String get icGithub => 'ic_github'.svg;
 }
 
 extension on String {

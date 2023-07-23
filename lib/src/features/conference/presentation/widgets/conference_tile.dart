@@ -13,6 +13,7 @@ class ConferenceTile extends StatelessWidget {
     required this.startDate,
     required this.isVisibleUpperLine,
     required this.isVisibleBottomLine,
+    required this.onTap,
   });
 
   final String name;
@@ -20,6 +21,7 @@ class ConferenceTile extends StatelessWidget {
   final String startDate;
   final bool isVisibleUpperLine;
   final bool isVisibleBottomLine;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -46,9 +48,12 @@ class ConferenceTile extends StatelessWidget {
               isVisibleLowerLine: isVisibleBottomLine,
             ),
             Expanded(
-              child: ConferenceCardTile(
-                name: name,
-                slogan: slogan,
+              child: GestureDetector(
+                onTap: onTap,
+                child: ConferenceCardTile(
+                  name: name,
+                  slogan: slogan,
+                ),
               ),
             ),
           ],

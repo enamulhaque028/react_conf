@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:react_conf/src/config/routes/route.dart';
+import 'package:react_conf/src/features/conference/presentation/conference_details_page.dart';
 
 import 'widgets/conference_tile.dart';
 
@@ -20,6 +22,9 @@ class ConferencePage extends StatelessWidget {
             startDate: '02 September, 2023',
             isVisibleUpperLine: index != 0,
             isVisibleBottomLine: index != 4,
+            onTap: () => RouteController.instance.push(
+              page: const ConferenceDetailsPage(),
+            ),
           );
         },
       ),
