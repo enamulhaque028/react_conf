@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:react_conf/src/config/constants/app_color.dart';
 import 'package:react_conf/src/config/constants/image_assets.dart';
 import 'package:react_conf/src/features/home/cubit/navbar_cubit.dart';
 
+import '../../../common_widgets/custom_appbar.dart';
 import '../../conference/presentation/conference_page.dart';
 import '../../sponsors/sponsor_page.dart';
 
@@ -30,18 +30,7 @@ class _HomePageState extends State<HomePage> {
       builder: (context, state) {
         return Scaffold(
           backgroundColor: AppColor.kBackgroundColor,
-          appBar: AppBar(
-            backgroundColor: AppColor.kBackgroundColor,
-            elevation: 3,
-            toolbarHeight: 64.h,
-            shadowColor: AppColor.kBackgroundColor.withOpacity(0.3),
-            centerTitle: true,
-            title: Image.asset(
-              ImageAssets.imgAppLogo,
-              height: 48.h,
-              width: 103.w,
-            ),
-          ),
+          appBar: const CustomAppbar(),
           body: PageView(
             controller: pageController,
             physics: const NeverScrollableScrollPhysics(),
@@ -81,7 +70,8 @@ class _HomePageState extends State<HomePage> {
   void changeTab(int index) {
     pageController.animateToPage(
       index,
-      duration: const Duration(milliseconds: 500), curve: Curves.easeInOut,
+      duration: const Duration(milliseconds: 500), 
+      curve: Curves.easeInOut,
     );
   }
 }

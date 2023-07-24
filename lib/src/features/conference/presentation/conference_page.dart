@@ -6,6 +6,7 @@ import 'package:react_conf/src/features/conference/presentation/conference_detai
 
 import '../../../common_widgets/loading_indicator.dart';
 import '../bloc/conference_bloc.dart';
+import '../domain/conference_model.dart';
 import 'widgets/conference_tile.dart';
 
 class ConferencePage extends StatelessWidget {
@@ -17,7 +18,7 @@ class ConferencePage extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: BlocBuilder<ConferenceBloc, ConferenceState>(
         builder: (context, state) {
-          var conferenceData = state.isLoading ? [] : state.conferenceData!.data.conferences;
+          List<Conference> conferenceData = state.isLoading ? [] : state.conferenceData!.data.conferences;
           return state.isLoading ? const LoadingIndicator() : ListView.builder(
             padding: EdgeInsets.only(top: 16.h),
             itemCount: conferenceData.length,
