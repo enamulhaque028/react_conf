@@ -7,6 +7,7 @@ import 'package:react_conf/src/config/constants/image_assets.dart';
 import 'package:react_conf/src/features/home/cubit/navbar_cubit.dart';
 
 import '../../conference/presentation/conference_page.dart';
+import '../../sponsors/sponsor_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class _HomePageState extends State<HomePage> {
 
   static final List<Widget> _widgetOptions = <Widget>[
     const ConferencePage(),
-    Container(),
+    const SponsorPage(),
   ];
 
   @override
@@ -36,7 +37,7 @@ class _HomePageState extends State<HomePage> {
             shadowColor: AppColor.kBackgroundColor.withOpacity(0.3),
             centerTitle: true,
             title: Image.asset(
-              ImageAssets.icAppLogo,
+              ImageAssets.imgAppLogo,
               height: 48.h,
               width: 103.w,
             ),
@@ -64,7 +65,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               BottomNavigationBarItem(
-                label: 'Profile',
+                label: 'Sponsors',
                 icon: SvgPicture.asset(
                   ImageAssets.icSponsor,
                   color: state.isOdd ? AppColor.kPrimaryColor : null,

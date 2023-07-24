@@ -1,7 +1,15 @@
 class ImageAssets {
   const ImageAssets._();
 
-  static String get icAppLogo => 'ic_app_logo'.png;
+  //::::::::::::::::::::::::::::::: Image ASSETS :::::::::::::::::::::::::::::::
+  static String get imgAppLogo => 'ic_app_logo'.png;
+  static String get imgCatalog => 'img_catalog'.png;
+  static String get imgCircooles => 'img_circooles'.png;
+  static String get imgGoforce => 'img_goforce'.png;
+  static String get imgLayer => 'img_layer'.png;
+  static String get imgSispyhus => 'img_sispyhus'.png;
+
+  //::::::::::::::::::::::::::::::: ICON ASSETS ::::::::::::::::::::::::::::::::
   static String get icConference => 'ic_conference'.svg;
   static String get icSponsor => 'ic_sponsor'.svg;
   static String get icMarker => 'ic_marker'.svg;
