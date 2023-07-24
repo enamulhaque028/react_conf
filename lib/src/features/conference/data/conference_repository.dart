@@ -1,7 +1,6 @@
-import 'dart:developer';
-
 import 'package:react_conf/src/config/constants/urls.dart';
 import 'package:react_conf/src/core/network/http_client.dart';
+import 'package:react_conf/src/core/utility/log.dart';
 
 import '../domain/conference_model.dart';
 
@@ -67,16 +66,16 @@ query {
         // final data = json.decode(json.encode(response.data));
         // var data = ConferenceModel.fromJson(response.data);
         ConferenceModel data = conferenceModelFromJson(response.data);
-        log(data.data.conferences[0].startDate.toString());
+        appPrint(data.data.conferences[0].startDate.toString());
         // log(data.data.conferences.length.toString());
         conferenceData = data;
         return conferenceData;
       } catch (e) {
-        log("ERROR: $e");
+        appPrint("ERROR: $e");
         return conferenceData;
       }
     } else {
-      log(response.statusMessage.toString());
+      appPrint(response.statusMessage.toString());
       return conferenceData;
     }
   }
