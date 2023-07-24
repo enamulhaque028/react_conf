@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:react_conf/src/config/constants/app_color.dart';
 
 import 'social_icon_tile.dart';
@@ -35,10 +36,13 @@ class CustomCardTile extends StatelessWidget {
               child: SizedBox(
                 height: 88.h,
                 width: 88.h,
-                child: Image.network(
-                  imageUrl,
-                  fit: BoxFit.cover,
-                ),
+                child: imageUrl.toLowerCase().split('.').last.contains('svg') ? SvgPicture.network(
+                    imageUrl,
+                    fit: BoxFit.contain,
+                  ) : Image.network(
+                      imageUrl,
+                      fit: BoxFit.contain,
+                    ),
               ),
             ),
             SizedBox(width: 10.w),
@@ -55,7 +59,9 @@ class CustomCardTile extends StatelessWidget {
                     ),
                     maxLines: 2,
                   ),
-                  isVisibleSocialIcons ? const SocialIconTile() : SizedBox(height: 8.h),
+                  isVisibleSocialIcons
+                      ? const SocialIconTile()
+                      : SizedBox(height: 8.h),
                   Text(
                     subTitle,
                     style: TextStyle(

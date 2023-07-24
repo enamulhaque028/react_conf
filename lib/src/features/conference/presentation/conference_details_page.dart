@@ -7,7 +7,12 @@ import 'package:vertical_scrollable_tabview/vertical_scrollable_tabview.dart';
 import 'widgets/conference_category.dart';
 
 class ConferenceDetailsPage extends StatefulWidget {
-  const ConferenceDetailsPage({super.key});
+  const ConferenceDetailsPage({
+    super.key,
+    required this.conferenceDataIndex,
+  });
+
+  final int conferenceDataIndex;
   @override
   State<ConferenceDetailsPage> createState() => _ConferenceDetailsPageState();
 }
@@ -55,6 +60,7 @@ class _ConferenceDetailsPageState extends State<ConferenceDetailsPage>
           child: ConferenceCategoryTile(
             category: object.toString(),
             index: index,
+            conferenceDataIndex: widget.conferenceDataIndex,
           ),
         ),
         slivers: [

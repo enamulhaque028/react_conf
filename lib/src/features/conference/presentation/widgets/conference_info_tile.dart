@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:react_conf/src/common_widgets/custom_card_tile.dart';
 import 'package:react_conf/src/config/constants/app_color.dart';
 
 class ConferenceInfoTile extends StatelessWidget {
@@ -8,10 +7,12 @@ class ConferenceInfoTile extends StatelessWidget {
     super.key,
     required this.category,
     this.isVisibleSocialIcons = false,
+    required this.child,
   });
 
   final String category;
   final bool isVisibleSocialIcons;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
@@ -34,23 +35,7 @@ class ConferenceInfoTile extends StatelessWidget {
             color: AppColor.kGreyColor3,
             borderRadius: BorderRadius.circular(8.r),
           ),
-          child: ListView.builder(
-            itemCount: 3,
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            padding: EdgeInsets.fromLTRB(24.w, 24.h, 24.w, 16.h),
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: EdgeInsets.only(bottom: 8.h),
-                child: CustomCardTile(
-                  imageUrl: 'https://img.freepik.com/premium-photo/beautiful-landscape-based-3d-rendering-illustration_771975-25.jpg',
-                  title: 'John Blain Doe',
-                  subTitle: 'Lorem ipsum dolor sit amet, con sec tetur ad ipi scin ssddg elit. Et con dim entum lectus in vel pellesn tesque arcu non odio.',
-                  isVisibleSocialIcons: isVisibleSocialIcons,
-                ),
-              );
-            },
-          ),
+          child: child,
         ),
       ],
     );

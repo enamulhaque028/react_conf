@@ -42,6 +42,7 @@ class ConferenceCardTile extends StatelessWidget {
             padding: EdgeInsets.all(16.sp),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,

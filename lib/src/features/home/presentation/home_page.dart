@@ -25,57 +25,55 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => NavbarCubit(),
-      child: BlocBuilder<NavbarCubit, int>(
-        builder: (context, state) {
-          return Scaffold(
+    return BlocBuilder<NavbarCubit, int>(
+      builder: (context, state) {
+        return Scaffold(
+          backgroundColor: AppColor.kBackgroundColor,
+          appBar: AppBar(
             backgroundColor: AppColor.kBackgroundColor,
-            appBar: AppBar(
-              backgroundColor: AppColor.kBackgroundColor,
-              elevation: 3,
-              toolbarHeight: 64.h,
-              shadowColor: AppColor.kBackgroundColor.withOpacity(0.3),
-              title: Image.asset(
-                ImageAssets.icAppLogo,
-                height: 48.h,
-                width: 103.w,
+            elevation: 3,
+            toolbarHeight: 64.h,
+            shadowColor: AppColor.kBackgroundColor.withOpacity(0.3),
+            centerTitle: true,
+            title: Image.asset(
+              ImageAssets.icAppLogo,
+              height: 48.h,
+              width: 103.w,
+            ),
+          ),
+          body: PageView(
+            controller: pageController,
+            physics: const NeverScrollableScrollPhysics(),
+            children: _widgetOptions,
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            currentIndex: state,
+            onTap: (index) {
+              context.read<NavbarCubit>().onItemTapped(index);
+              changeTab(index);
+            },
+            backgroundColor: AppColor.kBackgroundColor,
+            selectedItemColor: AppColor.kPrimaryColor,
+            unselectedItemColor: AppColor.kGreyColor2,
+            items: [
+              BottomNavigationBarItem(
+                label: 'Conference',
+                icon: SvgPicture.asset(
+                  ImageAssets.icConference,
+                  color: state.isEven ? AppColor.kPrimaryColor : null,
+                ),
               ),
-            ),
-            body: PageView(
-              controller: pageController,
-              physics: const NeverScrollableScrollPhysics(),
-              children: _widgetOptions,
-            ),
-            bottomNavigationBar: BottomNavigationBar(
-              currentIndex: state,
-              onTap: (index) {
-                context.read<NavbarCubit>().onItemTapped(index);
-                changeTab(index);
-              },
-              backgroundColor: AppColor.kBackgroundColor,
-              selectedItemColor: AppColor.kPrimaryColor,
-              unselectedItemColor: AppColor.kGreyColor2,
-              items: [
-                BottomNavigationBarItem(
-                  label: 'Conference',
-                  icon: SvgPicture.asset(
-                    ImageAssets.icConference,
-                    color: state.isEven ? AppColor.kPrimaryColor : null,
-                  ),
+              BottomNavigationBarItem(
+                label: 'Profile',
+                icon: SvgPicture.asset(
+                  ImageAssets.icSponsor,
+                  color: state.isOdd ? AppColor.kPrimaryColor : null,
                 ),
-                BottomNavigationBarItem(
-                  label: 'Profile',
-                  icon: SvgPicture.asset(
-                    ImageAssets.icSponsor,
-                    color: state.isOdd ? AppColor.kPrimaryColor : null,
-                  ),
-                ),
-              ],
-            ),
-          );
-        },
-      ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 

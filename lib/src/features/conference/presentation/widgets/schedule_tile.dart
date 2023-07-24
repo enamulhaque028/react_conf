@@ -2,13 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:react_conf/src/config/constants/app_color.dart';
 
+import '../../domain/conference_model.dart';
+
 class ScheduleTile extends StatelessWidget {
   const ScheduleTile({
     super.key,
     required this.category,
+    required this.scheduleData,
   });
 
   final String category;
+  final List<Schedule> scheduleData;
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +36,12 @@ class ScheduleTile extends StatelessWidget {
             borderRadius: BorderRadius.circular(8.r),
           ),
           child: ListView.builder(
-            itemCount: 2,
+            itemCount: scheduleData.length,
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             padding: EdgeInsets.fromLTRB(24.w, 24.h, 24.w, 16.h),
             itemBuilder: (context, index) {
+              var scheduleInfo = scheduleData[index];
               return Padding(
                 padding: EdgeInsets.only(bottom: 8.h),
                 child: Card(
@@ -52,7 +57,7 @@ class ScheduleTile extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              '2022-09-14',
+                              scheduleInfo.day,
                               style: TextStyle(
                                 fontSize: 16.sp,
                                 fontWeight: FontWeight.w700,
@@ -70,18 +75,19 @@ class ScheduleTile extends StatelessWidget {
                           ],
                         ),
                         ListView.builder(
-                          itemCount: 4,
+                          itemCount: scheduleInfo.intervals.length,
                           padding: EdgeInsets.only(top: 0.h),
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemBuilder: (context, index) {
+                            var intervalInfo = scheduleInfo.intervals[index];
                             return Padding(
                               padding: EdgeInsets.only(top: 16.w),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Duration : 05:00-06:00',
+                                    'Duration : ${intervalInfo.begin}-${intervalInfo.end}',
                                     style: TextStyle(
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.w400,
@@ -91,7 +97,7 @@ class ScheduleTile extends StatelessWidget {
                                   Padding(
                                     padding: EdgeInsets.only(left: 8.w),
                                     child: Text(
-                                      '• Registration',
+                                      '• ${intervalInfo.title}',
                                       style: TextStyle(
                                         fontSize: 14.sp,
                                         fontWeight: FontWeight.w400,
